@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1920"
+     height="1080"
+     viewBox="0 0 1920 1080">
+
+<defs>
+
+  <!-- ================================================= -->
+  <!-- BACKGROUND -->
+  <!-- ================================================= -->
+
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#010309"/>
+    <stop offset=".45" stop-color="#07151d"/>
+    <stop offset="1" stop-color="#090314"/>
+  </linearGradient>
+
+  <radialGradient id="cyanGlow">
+    <stop offset="0" stop-color="#32eaff" stop-opacity=".35"/>
+    <stop offset=".35" stop-color="#087d91" stop-opacity=".12"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0"/>
+  </radialGradient>
+
+  <radialGradient id="purpleGlow">
+    <stop offset="0" stop-color="#a35cff" stop-opacity=".28"/>
+    <stop offset=".4" stop-color="#51208c" stop-opacity=".1"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0"/>
+  </radialGradient>
+
+
+  <!-- ================================================= -->
+  <!-- GLOW -->
+  <!-- ================================================= -->
+
+  <filter id="glow"
+          x="-100%"
+          y="-100%"
+          width="300%"
+          height="300%">
+
+    <feGaussianBlur stdDeviation="5"
+                    result="blur"/>
+
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+
+  </filter>
+
+
+  <filter id="bigGlow"
+          x="-100%"
+          y="-100%"
+          width="300%"
+          height="300%">
+
+    <feGaussianBlur stdDeviation="18"
+                    result="blur"/>
+
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+
+  </filter>
+
+
+  <!-- ================================================= -->
+  <!-- GRID -->
+  <!-- ================================================= -->
+
+  <pattern id="grid"
+           width="80"
+           height="80"
+           patternUnits="userSpaceOnUse">
+
+    <path d="M80 0H0V80"
+          fill="none"
+          stroke="#2b8292"
+          stroke-width="1"
+          opacity=".12"/>
+
+  </pattern>
+
+
+  <!-- ================================================= -->
+  <!-- METAL -->
+  <!-- ================================================= -->
+
+  <linearGradient id="cyanMetal"
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="1">
+
+    <stop offset="0" stop-color="#dfffff"/>
+    <stop offset=".2" stop-color="#40e5f5"/>
+    <stop offset=".55" stop-color="#087486"/>
+    <stop offset="1" stop-color="#02171d"/>
+
+  </linearGradient>
+
+
+  <linearGradient id="purpleMetal"
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="1">
+
+    <stop offset="0" stop-color="#eee3ff"/>
+    <stop offset=".25" stop-color="#a46cff"/>
+    <stop offset=".65" stop-color="#48247e"/>
+    <stop offset="1" stop-color="#11061c"/>
+
+  </linearGradient>
+
+</defs>
+
+
+<!-- ================================================= -->
+<!-- BACKGROUND -->
+<!-- ================================================= -->
+
+<rect width="1920"
+      height="1080"
+      fill="url(#bg)"/>
+
+
+<!-- ================================================= -->
+<!-- MOVING ATMOSPHERE -->
+<!-- ================================================= -->
+
+<ellipse cx="650"
+         cy="500"
+         rx="700"
+         ry="550"
+         fill="url(#cyanGlow)"
+         filter="url(#bigGlow)">
+
+  <animate attributeName="cx"
+           values="550;750;550"
+           dur="18s"
+           repeatCount="indefinite"/>
+
+  <animate attributeName="cy"
+           values="500;430;500"
+           dur="14s"
+           repeatCount="indefinite"/>
+
+</ellipse>
+
+
+<ellipse cx="1500"
+         cy="650"
+         rx="600"
+         ry="500"
+         fill="url(#purpleGlow)"
+         filter="url(#bigGlow)">
+
+  <animate attributeName="cx"
+           values="1500;1380;1500"
+           dur="22s"
+           repeatCount="indefinite"/>
+
+</ellipse>
+
+
+<!-- ================================================= -->
+<!-- MOVING GRID -->
+<!-- ================================================= -->
+
+<g opacity=".8">
+
+  <rect x="0"
+        y="0"
+        width="1920"
+        height="1080"
+        fill="url(#grid)">
+
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0; 80 80; 0 0"
+      dur="20s"
+      repeatCount="indefinite"/>
+
+  </rect>
+
+</g>
+
+
+<!-- ================================================= -->
+<!-- DIAGONAL ENERGY STREAM -->
+<!-- ================================================= -->
+
+<g fill="none"
+   stroke-linecap="round">
+
+  <path d="M-300 850
+           L400 850
+           L700 550
+           L1300 550
+           L2200 -100"
+        stroke="#0b4652"
+        stroke-width="90"
+        opacity=".2"/>
+
+  <path d="M-300 850
+           L400 850
+           L700 550
+           L1300 550
+           L2200 -100"
+        stroke="#36e6f5"
+        stroke-width="4"
+        opacity=".7"
+        stroke-dasharray="20 40"
+        filter="url(#glow)">
+
+    <animate attributeName="stroke-dashoffset"
+             from="0"
+             to="-600"
+             dur="8s"
+             repeatCount="indefinite"/>
+
+  </path>
+
+</g>
+
+
+<!-- ================================================= -->
+<!-- CENTRAL CORE -->
+<!-- ================================================= -->
+
+<g transform="translate(930 520)">
+
+  <!-- Outer rotating ring -->
+
+  <circle r="320"
+          fill="none"
+          stroke="#155a69"
+          stroke-width="3"
+          stroke-dasharray="8 22"
+          opacity=".7">
+
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      from="0"
+      to="360"
+      dur="35s"
+      repeatCount="indefinite"/>
+
+  </circle>
+
+
+  <!-- Counter rotating ring -->
+
+  <circle r="280"
+          fill="none"
+          stroke="#7445c5"
+          stroke-width="2"
+          stroke-dasharray="70 20 5 30"
+          opacity=".65">
+
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      from="360"
+      to="0"
+      dur="24s"
+      repeatCount="indefinite"/>
+
+  </circle>
+
+
+  <!-- Energy pulse -->
+
+  <circle r="210"
+          fill="#1de5f5"
+          opacity=".04">
+
+    <animate attributeName="r"
+             values="180;250;180"
+             dur="4s"
+             repeatCount="indefinite"/>
+
+    <animate attributeName="opacity"
+             values=".03;.12;.03"
+             dur="4s"
+             repeatCount="indefinite"/>
+
+  </circle>
+
+
+  <!-- Core housing -->
+
+  <polygon points="
+    0,-220
+    190,-110
+    190,110
+    0,220
+    -190,110
+    -190,-110"
+    fill="#06151d"
+    stroke="url(#cyanMetal)"
+    stroke-width="5"/>
+
+
+  <!-- Purple half -->
+
+  <path d="
+    M0 -220
+    L190 -110
+    L190 110
+    L0 220
+    Z"
+    fill="url(#purpleMetal)"
+    opacity=".45"/>
+
+
+  <!-- Inner ring -->
+
+  <circle r="155"
+          fill="#020b10"
+          stroke="#32ddeb"
+          stroke-width="4"
+          opacity=".95"/>
+
+
+  <!-- ================================================= -->
+  <!-- CODE SYMBOL -->
+  <!-- ================================================= -->
+
+  <g fill="none"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <path d="M-60 -110
+             L-165 0
+             L-60 110"
+          stroke="#4cebf7"
+          stroke-width="31"
+          filter="url(#glow)"/>
+
+    <path d="M50 -125
+             L-30 125"
+          stroke="#d8e9ec"
+          stroke-width="25"/>
+
+    <path d="M60 -110
+             L165 0
+             L60 110"
+          stroke="#a06cff"
+          stroke-width="31"
+          filter="url(#glow)"/>
+
+  </g>
+
+
+  <!-- ================================================= -->
+  <!-- CORE EYE -->
+  <!-- ================================================= -->
+
+  <circle r="35"
+          fill="#06151c"
+          stroke="#65efff"
+          stroke-width="4"
+          filter="url(#glow)"/>
+
+  <circle r="12"
+          fill="#ffffff"
+          filter="url(#bigGlow)">
+
+    <animate attributeName="r"
+             values="8;16;8"
+             dur="2s"
+             repeatCount="indefinite"/>
+
+  </circle>
+
+
+  <!-- ================================================= -->
+  <!-- ORBITING NODES -->
+  <!-- ================================================= -->
+
+  <g>
+
+    <circle cx="0"
+            cy="-320"
+            r="7"
+            fill="#62f3ff"
+            filter="url(#glow)"/>
+
+    <circle cx="0"
+            cy="320"
+            r="6"
+            fill="#a16fff"
+            filter="url(#glow)"/>
+
+    <circle cx="320"
+            cy="0"
+            r="6"
+            fill="#62f3ff"
+            filter="url(#glow)"/>
+
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      from="0"
+      to="360"
+      dur="12s"
+      repeatCount="indefinite"/>
+
+  </g>
+
+</g>
+
+
+<!-- ================================================= -->
+<!-- FLOATING CODE -->
+<!-- ================================================= -->
+
+<g font-family="monospace"
+   font-weight="bold">
+
+  <!-- code stream LEFT -->
+
+  <g transform="translate(140 270)">
+
+    <text x="0"
+          y="0"
+          font-size="21"
+          fill="#5ceaf7">
+
+      &lt;system&gt;
+
+      <animateTransform
+        attributeName="transform"
+        type="translate"
+        values="0 0; 0 35; 0 0"
+        dur="7s"
+        repeatCount="indefinite"/>
+
+    </text>
+
+    <text x="35"
+          y="38"
+          font-size="18"
+          fill="#8f6aff">
+
+      initialize();
+
+      <animateTransform
+        attributeName="transform"
+        type="translate"
+        values="0 0; 0 -25; 0 0"
+        dur="8s"
+        repeatCount="indefinite"/>
+
+    </text>
+
+    <text x="15"
+          y="76"
+          font-size="18"
+          fill="#8aa0a7">
+
+      await build();
+
+    </text>
+
+  </g>
+
+
+  <!-- code stream RIGHT -->
+
+  <g transform="translate(1430 250)">
+
+    <text x="0"
+          y="0"
+          font-size="20"
+          fill="#a878ff">
+
+      function create()
+
+      <animateTransform
+        attributeName="transform"
+        type="translate"
+        values="0 0; -30 20; 0 0"
+        dur="9s"
+        repeatCount="indefinite"/>
+
+    </text>
+
+    <text x="40"
+          y="38"
+          font-size="18"
+          fill="#62eaf5">
+
+      return idea;
+
+    </text>
+
+    <text x="20"
+          y="74"
+          font-size="16"
+          fill="#607a82">
+
+      // compile imagination
+
+    </text>
+
+  </g>
+
+</g>
+
+
+<!-- ================================================= -->
+<!-- FLOATING CODE PARTICLES -->
+<!-- ================================================= -->
+
+<g font-family="monospace"
+   font-weight="bold"
+   filter="url(#glow)">
+
+  <text x="250"
+        y="650"
+        font-size="28"
+        fill="#4ce8f5">
+
+    { }
+
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0; 40 -30; 0 0"
+      dur="6s"
+      repeatCount="indefinite"/>
+
+  </text>
+
+
+  <text x="1510"
+        y="580"
+        font-size="28"
+        fill="#a06cff">
+
+    [ ]
+
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0; -35 25; 0 0"
+      dur="7s"
+      repeatCount="indefinite"/>
+
+  </text>
+
+
+  <text x="380"
+        y="850"
+        font-size="25"
+        fill="#55eaf7">
+
+    &lt;/&gt;
+
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0; -20 -40; 0 0"
+      dur="8s"
+      repeatCount="indefinite"/>
+
+  </text>
+
+
+  <text x="1620"
+        y="800"
+        font-size="25"
+        fill="#a778ff">
+
+    =&gt;
+
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      values="0 0; 25 -30; 0 0"
+      dur="7s"
+      repeatCount="indefinite"/>
+
+  </text>
+
+</g>
+
+
+<!-- ================================================= -->
+<!-- CIRCUIT NETWORK -->
+<!-- ================================================= -->
+
+<g fill="none"
+   stroke="#31dcea"
+   stroke-width="2"
+   opacity=".55">
+
+  <path d="M0 350H150L220 280H340">
+
+    <animate
+      attributeName="stroke-dasharray"
+      values="0 500;100 400;0 500"
+      dur="5s"
+      repeatCount="indefinite"/>
+
+  </path>
+
+
+  <path d="M1920 360H1770L1700 290H1580">
+
+    <animate
+      attributeName="stroke-dasharray"
+      values="0 500;100 400;0 500"
+      dur="6s"
+      repeatCount="indefinite"/>
+
+  </path>
+
+
+  <path d="M0 760H170L240 830H370">
+
+    <animate
+      attributeName="stroke-dashoffset"
+      from="0"
+      to="-300"
+      dur="4s"
+      repeatCount="indefinite"/>
+
+  </path>
+
+</g>
+
+
+<!-- ================================================= -->
+<!-- FLOATING PARTICLES -->
+<!-- ================================================= -->
+
+<g fill="#63f3ff"
+   filter="url(#glow)">
+
+  <circle cx="150" cy="180" r="3">
+    <animate attributeName="cy"
+             values="180;140;180"
+             dur="5s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="300" cy="500" r="2">
+    <animate attributeName="cy"
+             values="500;550;500"
+             dur="6s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="500" cy="150" r="3">
+    <animate attributeName="cx"
+             values="500;530;500"
+             dur="7s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="1390" cy="150" r="2">
+    <animate attributeName="cy"
+             values="150;190;150"
+             dur="5s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="1660" cy="460" r="3">
+    <animate attributeName="cx"
+             values="1660;1620;1660"
+             dur="8s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="1750" cy="850" r="2">
+    <animate attributeName="cy"
+             values="850;810;850"
+             dur="6s"
+             repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="550" cy="900" r="3">
+    <animate attributeName="cx"
+             values="550;590;550"
+             dur="7s"
+             repeatCount="indefinite"/>
+  </circle>
+
+</g>
+
+
+<!-- ================================================= -->
+<!-- AAVARVD -->
+<!-- ================================================= -->
+
+<text x="960"
+      y="970"
+      text-anchor="middle"
+      font-family="monospace"
+      font-size="70"
+      font-weight="bold"
+      letter-spacing="20"
+      fill="#dfffff"
+      filter="url(#glow)">
+
+  AAVARVD
+
+  <animate attributeName="opacity"
+           values=".75;1;.75"
+           dur="4s"
+           repeatCount="indefinite"/>
+
+</text>
+
+
+<text x="960"
+      y="1010"
+      text-anchor="middle"
+      font-family="monospace"
+      font-size="13"
+      letter-spacing="8"
+      fill="#4d9da8">
+
+  CODE // CREATE // DEBUG // REPEAT
+
+</text>
+
+
+<!-- ================================================= -->
+<!-- VIGNETTE -->
+<!-- ================================================= -->
+
+<rect x="0"
+      y="0"
+      width="1920"
+      height="1080"
+      fill="none"
+      stroke="#000"
+      stroke-width="80"
+      opacity=".42"/>
+
+</svg>
